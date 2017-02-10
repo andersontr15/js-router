@@ -1,94 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Simple Router</title>
-	<style>
-		#view {
+ <meta charset="UTF-8">
+ <title>Simple Router</title>
+ <style>
+  #view {
 
-		}
-	</style>
-	<script>
-		window.onload = function() {
-			console.log('DOM has loaded');
-			// create Router constructor 
+  }
+ </style>
+ <script>
+  window.onload = function() {
+   console.log('DOM has loaded');
+   // create a Router constructor 
 
-			var view = document.getElementById('view');
+   var view = document.getElementById('view');
 
 
-			// grab all active attribute routes 
+   // grab all active attribute routes  
 
-			var activeRoutes = Array.from(document.querySelectorAll('[route]'));
+   var activeRoutes = Array.from(document.querySelectorAll('[route]'));
 
-			function navigate(event) {
-				var route = event.target.attributes[0].value;
-				var routeInfo = myFirstRouter.routes.filter(function(r) {
-					return r.path === route;
-				})[0];
-				if(!routeInfo) {
-					window.history.pushState({}, '', 'error')
-					view.innerHTML = 'No route exists with this path'
-				}
-				else {
-					window.history.pushState({}, '', routeInfo.path);
-					console.log(window.history);
-					view.innerHTML = 'You have clicked the ' + routeInfo.name + ' route'
-				}
-			};
+   function navigate(event) {
+    var route = event.target.attributes[0].value;
+    var routeInfo = myFirstRouter.routes.filter(function(r) {
+     return r.path === route;
+    })[0];
+    if(!routeInfo) {
+     window.history.pushState({}, '', 'error')
+     view.innerHTML = 'No route exists with this path'
+    }
+    else {
+     window.history.pushState({}, '', routeInfo.path);
+     console.log(window.history);
+     view.innerHTML = 'You have clicked the ' + routeInfo.name + ' route'
+    }
+   };
 
-			// add event listeners
+   // add event listeners
 
-			activeRoutes.forEach(function(route) {
-				route.addEventListener('click', navigate, false);
-			});
+   activeRoutes.forEach(function(route) {
+    route.addEventListener('click', navigate, false);
+   });
 
-			var Router = function(name, routes) {
-				return {
-					name: name,
-					routes: routes
-				}
-			};
+   var Router = function(name, routes) {
+    return {
+     name: name,
+     routes: routes
+    }
+   };
 
-			var myFirstRouter = new Router('myFirstRouter', [
-					{
-						path: '/',
-						name: 'Root'
-					},
-					{
-						path: '/about',
-						name: 'About'
-					},
-					{
-						path: '/contact',
-						name: 'Contact'
-					}
-				]);
-			var currentPath = window.location.pathname;
-			if(currentPath === '/') {
-				view.innerHTML = 'You are on the root page';
-			}
-			else {
-				var route = myFirstRouter.routes.filter(function(r) {
-					return r.path === currentPath
-				})[0];
-				if(route) {
-					view.innerHTML = 'You are on the ' + route.name + ' path'
-				}
-				else {
-					view.innerHTML = '404!';
-				}
-				
-			}
+   var myFirstRouter = new Router('myFirstRouter', [
+     {
+      path: '/',
+      name: 'Root'
+     },
+     {
+      path: '/about',
+      name: 'About'
+     },
+     {
+      path: '/contact',
+      name: 'Contact'
+     }
+    ]);
+   var currentPath = window.location.pathname;
+   if(currentPath === '/') {
+    view.innerHTML = 'You are on the root page';
+   }
+   else {
+    var route = myFirstRouter.routes.filter(function(r) {
+     return r.path === currentPath
+    })[0];
+    if(route) {
+     view.innerHTML = 'You are on the ' + route.name + ' path'
+    }
+    else {
+     view.innerHTML = '404!';
+    }
+    
+   }
 
-		}
-	</script>
+  }
+ </script>
 </head>
 <body>
-		<h3>Simple router</h3>
-		<div id="view"></div>
-		<button route="/">Root</button>
-		<button route="/about">About</button>
-		<button route="/contact">Contact</button>
-		<button route="404">404</button>
+  <h3>Simple router</h3>
+  <div id="view"></div>
+  <button route="/">Root</button>
+  <button route="/about">About</button>
+  <button route="/contact">Contact</button>
+  <button route="404">404</button>
 </body>
 </html>
