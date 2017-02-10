@@ -1,0 +1,19 @@
+{
+  "name": "simple-router",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Theo <theoanderson3@gmail.com> (linkedin.com/in/andersontr15)",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.14.1"
+  },
+  "dependencies": {
+    "morgan": "^1.8.0"
+  }
+}
