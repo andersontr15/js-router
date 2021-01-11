@@ -18,7 +18,7 @@
 
    // grab all active attribute routes  
 
-   var activeRoutes = Array.from(document.querySelectorAll('[route]'));
+   var activeRoutes = Array.from(document.querySelectorAll('[data-route]'));
 
    function navigate(event) {
     var route = event.target.attributes[0].value;
@@ -86,9 +86,9 @@
 <body>
   <h3>Simple router</h3>
   <div id="view"></div>
-  <button route="/">Root</button>
-  <button route="/about">About</button>
-  <button route="/contact">Contact</button>
-  <button route="404">404</button>
+  <button data-route="/">Root</button>
+  <button data-route="/about">About</button>
+  <button data-route="/contact">Contact</button>
+  <button data-route="404">404</button>
 </body>
 </html>
