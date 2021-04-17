@@ -26,11 +26,11 @@
      return r.path === route;
     })[0];
     if(!routeInfo) {
-     window.history.pushState({}, '', 'error')
+     window.history.pushState({ error: '404: route dos not exist!' }, '', 'error')
      view.innerHTML = 'No route exists with this path'
     }
     else {
-     window.history.pushState({}, '', routeInfo.path);
+     window.history.pushState({ routeInfo }, '', routeInfo.path);
      console.log(window.history);
      view.innerHTML = 'You have clicked the ' + routeInfo.name + ' route'
     }
